@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: gcr.io/YOUR_PROJECT_ID/your-node-app:latest
+        image: us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1
         ports:
         - containerPort: 3000
 ---
