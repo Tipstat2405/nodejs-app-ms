@@ -1,4 +1,12 @@
 steps:
+- name: 'node:14' # Use an appropriate Node.js version
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      npm install
+      npm run test # Adjust this based on your test script
+      npm run sonar # Add a script to run the SonarQube scanner
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
