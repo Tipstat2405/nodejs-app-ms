@@ -8,7 +8,7 @@ steps:
   - run
   - --filename=deployment.yaml
   - --location=us-central1
-  - --cluster=my-nodejs-cluster
+  - --cluster=nodejs-cluster
 images:
 - 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1'
 
