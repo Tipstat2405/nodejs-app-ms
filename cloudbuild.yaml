@@ -11,12 +11,9 @@ steps:
   args: [ 'build', '-t', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1']
-- name: "gcr.io/cloud-builders/gke-deploy"
-  args:
-  - run
-  - --filename=deployment.yaml
-  - --location=us-central1
-  - --cluster=nodejs-cluster
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'myrepo', '--image', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1', '--region', 'us-east1','--allow-unauthenticated']
 images:
 - 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1'
 
