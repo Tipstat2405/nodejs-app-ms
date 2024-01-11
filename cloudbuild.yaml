@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1', '.' ]
-- name: 'gcr.io/$PROJECT_ID/sonarqube-scanner'
+- name: 'gcr.io/cloud-builders/sonarqube-scanner'
   args: ['-Dsonar.projectKey=nodejs', '-Dsonar.sources=.', '-Dsonar.host.url=http://34.125.147.248/:9000', '-Dsonar.login=admin', '-Dsonar.password=Tipstat0160@']
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1']
