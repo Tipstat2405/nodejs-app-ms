@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp-container
-        image: nginx:latest
+        image: us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1
         ports:
         - containerPort: 80
 
