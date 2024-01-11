@@ -1,40 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: node-app
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: myapp
+      app: node-app
   template:
     metadata:
       labels:
-        app: myapp
+        app: node-app
     spec:
       containers:
-      - name: myapp-container
-        image: us-east1-docker.pkg.dev/gcpproject-410115/myrepo/repo:v1
-        imagePullPolicy: IfNotPresent
+      - name: node-app
+        image: gcr.io/YOUR_PROJECT_ID/your-node-app:latest
         ports:
-        - containerPort: 80
-
-
-
-
-
-
-
-
+        - containerPort: 3000
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-service
+  name: node-app-service
 spec:
   selector:
-    app: myapp
+    app: node-app
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 3000
   type: LoadBalancer
